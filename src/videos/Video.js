@@ -4,8 +4,11 @@ import React, { Component } from 'react';
 class Video extends Component {
 
   render(){
+    console.log(this.props)
     return (
-      "hi"
+      <div>
+        {this.props.video.title}
+      </div>
     )
   }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import VideoList from './VideoList'
+import VideoPlayer from './VideoPlayer'
 import { connect } from 'react-redux'
 import { fetchVideos } from '../actions'
 
@@ -14,6 +15,7 @@ render (){
   return (
     <div>
       <VideoList videos={this.props.videos} />
+      <VideoPlayer video={this.props.videos[0]}/>
     </div>
   )
 }
