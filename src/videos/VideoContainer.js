@@ -24,7 +24,7 @@ render (){
 
 const mapStateToProps = (state) => {
   return {
-    videos: state
+    videos: state.videos
   }
 }
 
