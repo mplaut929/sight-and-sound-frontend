@@ -5,7 +5,9 @@ import ReactPlayer from 'react-player'
 class VideoPlayer extends Component {
 
   state = {
-    song: false
+    song: false,
+    progress: 0,
+    currentSong: null
   }
 
   handleProgress= (progress) => {
@@ -15,28 +17,46 @@ class VideoPlayer extends Component {
     //   }
     // }
     // this.setState(prevState => ({ song: !prevState.song }))
+    this.setState({
+      progress: progress.playedSeconds
+    })
     const foundVideo = this.props.video.video_songs.find(vs => vs.song_start < progress.playedSeconds && vs.song_end > progress.playedSeconds)
     if (foundVideo){
       this.setState({
-        song: true
+        song: true,
+        currentSong: foundVideo
       })
     }else{
       this.setState({
-        song: false
+        song: false,
+        currentSong: null
       })
     }
   }
 
+  handleClick = () => {
+    const foundVideo = this.props.video.video_songs
+    // console.log(this.state.currentSong.song_id)
+    fetch('http://localhost:3000/user_songs', {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        user_id: 1,
+        song_id: this.state.currentSong.song_id
+      })
+    }).then(res => res.json()).then(console.log)
+  }
+
+
 
   render(){
-    console.log(this.state)
     return (
       <div>
         <ReactPlayer url={this.props.video ? this.props.video.url : null}
         playing
         controls={true}
         onProgress={this.handleProgress}/>
-        {this.state.song ? <button>Like Song!</button> : null}
+        {this.state.song ? <button onClick={this.handleClick}>Like Song!</button> : null}
       </div>
 
     )
