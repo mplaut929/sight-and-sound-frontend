@@ -6,31 +6,34 @@ import { fetchSongs } from '../actions'
 
 
 class SongContainer extends Component {
-  componentDidMount() {
-    this.props.fetchSongs()
-  }
+  // componentDidMount() {
+  //   if (this.props.currentUser){
+  //     this.props.fetchSongs(this.props.currentUser.id)
+  //   }
+  // }
 
 
 render (){
+  console.log(this.props)
   return (
     <div>
-    <SongList songs={this.props.songs} />
+    <SongList songs={this.props.currentUser? this.props.currentUser.songs : []} />
     </div>
   )
 }
 
 }
 
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-    songs: state.songs
-  }
-}
+// const mapStateToProps = (state) => {
+//   console.log(state)
+//   return {
+//     songs: state.songs
+//   }
+// }
 
 // function mapDispatchToProps(dispatch){
 //   return { fetchVideos: () => dispatch(fetchVideos()) }
 // }
 
 
-export default connect(mapStateToProps, { fetchSongs })(SongContainer)
+export default SongContainer

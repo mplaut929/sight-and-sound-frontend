@@ -12,8 +12,9 @@ class LoginForm extends React.Component {
 		})
 	}
 
-	handleSubmit = () => {
-		fetch("http://localhost:3001/api/v1/login", {
+	handleSubmit = (e) => {
+    e.preventDefault()
+		fetch("http://localhost:3000/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

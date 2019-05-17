@@ -15,7 +15,7 @@ render (){
   return (
     <div>
       <VideoList videos={this.props.videos} />
-      <VideoPlayer video={this.props.videos[0]}/>
+      <VideoPlayer video={this.props.videos[0]} currentUser={this.props.currentUser}/>
     </div>
   )
 }

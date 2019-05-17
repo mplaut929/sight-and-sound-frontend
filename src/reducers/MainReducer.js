@@ -1,4 +1,4 @@
-import { FETCH_VIDEOS, FETCH_SONGS } from '../actions/types'
+import { FETCH_VIDEOS, FETCH_SONGS, ADD_SONG } from '../actions/types'
 
 
 const initialState = {
@@ -16,6 +16,9 @@ const mainReducer = (state = initialState, action) => {
     case FETCH_SONGS:
       return {...state,
         songs: action.payload}
+    case ADD_SONG:
+      return {...state,
+        songs: this.state.songs.push(action.payload)}
     default:
       return state
   }
