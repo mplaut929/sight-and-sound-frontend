@@ -1,4 +1,4 @@
-import { FETCH_VIDEOS, FETCH_SONGS } from './types'
+import { FETCH_VIDEOS, FETCH_SONGS, ADD_SONG } from './types'
 
 
 export const fetchVideos = () => {
@@ -11,12 +11,11 @@ export const fetchVideos = () => {
   }
 }
 
-export const fetchSongs = () => {
+export const fetchSongs = (id) => {
   return (dispatch) => {
-    fetch('http://localhost:3000/users/1')
+    fetch(`http://localhost:3000/users/${id}`)
     .then(res => res.json())
     .then(songs => {
-      console.log(songs.songs)
       dispatch({type: FETCH_SONGS, payload: songs.songs})
     })
   }

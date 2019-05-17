@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player'
+import { connect } from 'react-redux'
+import { fetchSongs } from '../actions'
 
 
 class VideoPlayer extends Component {
@@ -41,10 +43,12 @@ class VideoPlayer extends Component {
       method: "POST",
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({
-        user_id: 1,
+        user_id: this.props.currentUser.id,
         song_id: this.state.currentSong.song_id
       })
-    }).then(res => res.json()).then(console.log)
+    }).then(res => res.json()).then(res => {
+      this.props.fetchSongs(this.props.currentUser.id)
+  })
   }
 
 
@@ -66,4 +70,4 @@ class VideoPlayer extends Component {
 
 }
 
-export default VideoPlayer
+export default connect(null, { fetchSongs })(VideoPlayer)
