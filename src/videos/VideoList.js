@@ -6,14 +6,14 @@ class VideoList extends Component {
 
   render(){
     return (
-      <div>
+      <div class="ui relaxed four column grid">
       {this.props.videos.map((video) => {
-          return <Video key={video.id} video={video}/>
+          return <Video updateVideo={this.props.updateVideo} key={video.id} video={video}/>
         })}
       </div>
     )
   }
-  
+
 }
 
 export default VideoList

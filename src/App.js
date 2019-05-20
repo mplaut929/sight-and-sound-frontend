@@ -4,6 +4,7 @@ import VideoContainer from './videos/VideoContainer'
 import SongContainer from './songs/SongContainer'
 import LoginForm from './forms/LoginForm'
 import SignupForm from './forms/SignupForm'
+import Navbar from './Navbar'
 import './App.css';
 import { connect } from 'react-redux'
 
@@ -76,6 +77,7 @@ class App extends Component {
     console.log(this.state.currentUser)
     return (
       <div className="App">
+        <Navbar />
           <Switch>
             <Route exact path="/" render={(routeProps) => {
               return <VideoContainer {...routeProps} currentUser={this.state.currentUser}/>
@@ -99,11 +101,11 @@ class App extends Component {
 
 }
 
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-    songs: state.songs
-  }
-}
+// const mapStateToProps = (state) => {
+//   console.log(state)
+//   return {
+//     songs: state.songs
+//   }
+// }
 
-export default connect(mapStateToProps, { fetchSongs })(withRouter(App));
+export default connect(null, { fetchSongs })(withRouter(App));

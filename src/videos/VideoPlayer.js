@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Button } from 'semantic-ui-react'
 import ReactPlayer from 'react-player'
 import { connect } from 'react-redux'
 import { fetchSongs } from '../actions'
+import { Link } from 'react-router-dom';
 
 
 class VideoPlayer extends Component {
@@ -56,11 +58,12 @@ class VideoPlayer extends Component {
   render(){
     return (
       <div>
+        <Link to="/songs">Songs</Link>
         <ReactPlayer url={this.props.video ? this.props.video.url : null}
         playing
         controls={true}
         onProgress={this.handleProgress}/>
-        {this.state.song ? <button onClick={this.handleClick}>Like Song!</button> : null}
+      {this.state.song ? <Button onClick={this.handleClick}>Like Song!</Button> : null}
       </div>
 
     )
@@ -70,4 +73,12 @@ class VideoPlayer extends Component {
 
 }
 
-export default connect(null, { fetchSongs })(VideoPlayer)
+
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    songs: state.songs
+  }
+}
+
+export default connect(mapStateToProps, { fetchSongs })(VideoPlayer)
