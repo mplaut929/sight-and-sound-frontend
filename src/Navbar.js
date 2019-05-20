@@ -17,7 +17,7 @@ export default class Navbar extends Component {
           active={activeItem === 'videos'}
           onClick={this.handleItemClick}
         >
-          <Link to="/" style={{ color: 'black' }}>Videos</Link>
+          <Link to="/videos" style={{ color: 'black' }}>Videos</Link>
         </Menu.Item>
 
         <Menu.Item name='songs' active={activeItem === 'songs'} onClick={this.handleItemClick}>
@@ -26,6 +26,13 @@ export default class Navbar extends Component {
 
         <Menu.Item
           position='right'
+          name='addVideo'
+          active={activeItem === 'addVideo'}
+          onClick={this.handleItemClick}
+        >
+          <Link to="/new" style={{ color: 'black' }}>Add Video</Link>
+        </Menu.Item>
+        <Menu.Item
           name='LoginPage'
           active={activeItem === 'loginPage'}
           onClick={this.handleItemClick}

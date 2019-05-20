@@ -4,7 +4,9 @@ import VideoContainer from './videos/VideoContainer'
 import SongContainer from './songs/SongContainer'
 import LoginForm from './forms/LoginForm'
 import SignupForm from './forms/SignupForm'
+import NewVideoForm from './forms/NewVideoForm'
 import Navbar from './Navbar'
+import Welcome from './Welcome'
 import './App.css';
 import { connect } from 'react-redux'
 
@@ -63,7 +65,7 @@ class App extends Component {
   			currentUser: response.user
   		}, () => {
   			localStorage.setItem("token", response.token)
-  			this.props.history.push(`/`)
+  			this.props.history.push(`/videos`)
   		})
   	}
 
@@ -74,12 +76,15 @@ class App extends Component {
 
 
   render(){
-    console.log(this.state.currentUser)
+    // console.log(this.state.currentUser)
     return (
       <div className="App">
         <Navbar />
           <Switch>
             <Route exact path="/" render={(routeProps) => {
+              return <Welcome {...routeProps} />
+            }} />
+            <Route exact path="/videos" render={(routeProps) => {
               return <VideoContainer {...routeProps} currentUser={this.state.currentUser}/>
             }} />
           <Route path="/songs" render={(routeProps) => {
@@ -90,6 +95,9 @@ class App extends Component {
           		}} />
             <Route path="/signup" render={(routeProps) => {
           			return <SignupForm {...routeProps} setCurrentUser={this.setCurrentUser}/>
+          		}} />
+            <Route path="/new" render={(routeProps) => {
+          			return <NewVideoForm {...routeProps} setCurrentUser={this.setCurrentUser}/>
           		}} />
           	</Switch>
       </div>
