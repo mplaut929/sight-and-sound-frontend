@@ -6,11 +6,11 @@ import { fetchSongs } from '../actions'
 
 
 class SongContainer extends Component {
-  // componentDidMount() {
-  //   if (this.props.currentUser){
-  //     this.props.fetchSongs(this.props.currentUser.id)
-  //   }
-  // }
+  componentDidMount() {
+    if (this.props.currentUser){
+      this.props.fetchSongs(this.props.currentUser.id)
+    }
+  }
 
 
 render (){
@@ -36,4 +36,4 @@ const mapStateToProps = (state) => {
 // }
 
 
-export default connect(mapStateToProps)(SongContainer)
+export default connect(mapStateToProps, { fetchSongs })(SongContainer)
