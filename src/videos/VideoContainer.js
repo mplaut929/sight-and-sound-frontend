@@ -6,16 +6,28 @@ import { fetchVideos } from '../actions'
 
 
 class VideoContainer extends Component {
+  state = {
+    currentVideo: null
+  }
+
+
   componentDidMount() {
     this.props.fetchVideos()
+  }
+
+  updateVideo = (video) => {
+    this.setState({
+      currentVideo: video
+    })
   }
 
 
 render (){
   return (
     <div>
-      <VideoList videos={this.props.videos} />
-      <VideoPlayer video={this.props.videos[0]} currentUser={this.props.currentUser}/>
+      <VideoList updateVideo={this.updateVideo} videos={this.props.videos} />
+      <div class="ui divider"></div>
+      <VideoPlayer video={this.state.currentVideo} currentUser={this.props.currentUser}/>
     </div>
   )
 }
