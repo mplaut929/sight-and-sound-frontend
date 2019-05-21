@@ -34,12 +34,27 @@ export default class NewVideoForm extends Component {
     })
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+    fetch('http://localhost:3000/videos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        title: this.state.videoTitle,
+        url: this.state.videoUrl,
+        thumbnail: this.state.videoThumbnail,
+        songs: this.state.songs
+
+      })
+    }).then(res => res.json()).then(console.log)
+  }
+
 
   render(){
     console.log(this.state)
     return (
 
-  <Form>
+  <Form onSubmit={this.handleSubmit}>
     <Form.Field width={8}>
       <label>Video Title</label>
       <input name='videoTitle' value={this.state.videoTitle} onChange={this.handleChange} placeholder='Video Title' />
@@ -56,7 +71,7 @@ export default class NewVideoForm extends Component {
     <Form.Group widths='equal'>
       <Form.Field>
         <label>Song Title</label>
-        <input name='title' value={song.title} fluid placeholder='Song Title' />
+        <input name='title' value={song.title} onChange={this.handleSongChange(index)} fluid placeholder='Song Title' />
       </Form.Field>
       <Form.Field>
         <label>Song Artist</label>
