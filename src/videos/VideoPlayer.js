@@ -57,8 +57,7 @@ class VideoPlayer extends Component {
 
   render(){
     return (
-      <div>
-        <Link to="/songs">Songs</Link>
+      <div class='player'>
         <ReactPlayer url={this.props.video ? this.props.video.url : null}
         playing
         controls={true}

@@ -6,10 +6,12 @@ class VideoList extends Component {
 
   render(){
     return (
-      <div class="ui relaxed four column grid">
+      <div class="app">
+        <ul className="hs">
       {this.props.videos.map((video) => {
           return <Video updateVideo={this.props.updateVideo} key={video.id} video={video}/>
         })}
+        </ul>
       </div>
     )
   }
