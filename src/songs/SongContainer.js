@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import SongList from './SongList'
+import SongPlayer from './SongPlayer'
+
 // import VideoPlayer from './VideoPlayer'
 import { connect } from 'react-redux'
 import { fetchSongs } from '../actions'

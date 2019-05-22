@@ -9,12 +9,11 @@ class Video extends Component {
 
   render(){
     return (
-      <div class="ui relaxed four column grid">
-        <div class="column" onClick={this.handleClick}>
+
+        <li class="item" onClick={this.handleClick}>
           <img src={this.props.video.thumbnail} class="ui image" />
           <h6>{this.props.video.title}</h6>
-      </div>
-    </div>
+      </li>
     )
   }
 

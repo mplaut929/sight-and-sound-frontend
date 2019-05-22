@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import { Button, Form, Input } from 'semantic-ui-react'
+import { fetchVideos } from '../actions'
+import { connect } from 'react-redux'
 
 
-export default class NewVideoForm extends Component {
+
+
+class NewVideoForm extends Component {
 
   state = {
     videoTitle: '',
@@ -46,7 +50,15 @@ export default class NewVideoForm extends Component {
         songs: this.state.songs
 
       })
-    }).then(res => res.json()).then(console.log)
+    }).then(res => res.json()).then(res => {
+    // this.setState({
+    //   videoTitle: '',
+    //   videoUrl: '',
+    //   videoThumbnail: '',
+    //   songs: [{title: '', artist: '', url: '', song_start: null, song_end: null}]
+    // })
+    this.props.fetchVideos()
+  })
   }
 
 
@@ -103,3 +115,12 @@ export default class NewVideoForm extends Component {
 
 
 }
+
+const mapStateToProps = (state) => {
+  // console.log(state)
+  return {
+    videos: state.videos
+  }
+}
+
+export default connect(mapStateToProps, { fetchVideos })(NewVideoForm)
