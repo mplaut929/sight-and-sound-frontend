@@ -1,9 +1,10 @@
-import { FETCH_VIDEOS, FETCH_SONGS, ADD_SONG } from '../actions/types'
+import { FETCH_VIDEOS, FETCH_SONGS, PLAY_SONG } from '../actions/types'
 
 
 const initialState = {
   videos:[],
-  songs: []
+  songs: [],
+  selectedSong: null
 }
 
 
@@ -16,9 +17,9 @@ const mainReducer = (state = initialState, action) => {
     case FETCH_SONGS:
       return {...state,
         songs: action.payload}
-    case ADD_SONG:
+    case PLAY_SONG:
       return {...state,
-        songs: this.state.songs.push(action.payload)}
+        selectedSong: action.payload}
     default:
       return state
   }

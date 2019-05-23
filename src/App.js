@@ -100,6 +100,7 @@ class App extends Component {
           			return <NewVideoForm {...routeProps} setCurrentUser={this.setCurrentUser}/>
           		}} />
           	</Switch>
+
       </div>
 
 

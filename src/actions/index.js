@@ -1,4 +1,4 @@
-import { FETCH_VIDEOS, FETCH_SONGS, ADD_SONG } from './types'
+import { FETCH_VIDEOS, FETCH_SONGS, PLAY_SONG } from './types'
 
 
 export const fetchVideos = () => {
@@ -18,5 +18,12 @@ export const fetchSongs = (id) => {
     .then(songs => {
       dispatch({type: FETCH_SONGS, payload: songs.songs})
     })
+  }
+}
+
+export const selectSong = (song) => {
+  return {
+    type: PLAY_SONG,
+    payload: song
   }
 }

@@ -1,24 +1,75 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Image, List, Icon } from 'semantic-ui-react'
+
+
 
 
 
 
 class Song extends Component {
 
+  state = {
+    playing: false,
+    videos: []
+  }
+
+
+  componentDidMount() {
+    fetch(`http://localhost:3000/songs/${this.props.song.id}`)
+    .then(res => res.json())
+    .then(res => {
+      this.setState({
+        videos: res.videos
+      })
+    })
+  }
+
+  handleClick = () => {
+    this.props.currentSong === this.props.song.url ?
+    this.props.playOrPause()
+    :
+    this.props.updateSong(this.props.song.url)
+    this.setState({
+      playing: !this.state.playing
+    })
+  }
+
+
   render(){
-    console.log(this.props)
+    console.log(this.state)
     return (
-      <div>
-        <h5>{this.props.song.title}</h5>
-        <h6>{this.props.song.artist}</h6>
-        <a href={this.props.song.url} target='_blank'>{this.props.song.url}</a>
-      </div>
+      <List.Item>
+        <List.Content floated='right'>
+          {this.props.song.url ?
+          (this.state.playing ?
+            <Button onClick={this.handleClick}>
+              <Icon name='pause' />
+            </Button>
+            :
+            <Button onClick={this.handleClick}>
+              <Icon name='play' />
+            </Button>)
+           :
+          <Button disabled>Not Available</Button>
+        }
+        </List.Content>
+        <List.Content>
+          <List.Header>{this.props.song.title}</List.Header>
+          {this.props.song.artist}<br />
+        {this.state.videos.length === 1 ? <small>From the video: {this.state.videos[0].title}</small> : <p>Hi</p>}
+        </List.Content>
+      </List.Item>
     )
   }
 
 
 
+  // {this.props.song.url ?
+  //   <Button color='youtube'>
+  //     <a href={this.props.song.url} target='_blank'>
+  //       <Icon name='youtube' />Youtube</a></Button> :
+  //         <Button disabled>Not on Youtube</Button>}
 }
 
 export default Song
