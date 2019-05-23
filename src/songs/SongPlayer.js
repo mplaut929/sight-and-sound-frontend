@@ -1,35 +1,30 @@
-import React from 'react';
-import { PlayButton, Timer } from 'react-soundplayer/components';
+import React, { Component } from 'react';
+import ReactPlayer from 'react-player'
 
-// it's just an alias for 'withSoundCloudAudio' but makes code clearer
-import { withCustomAudio } from 'react-soundplayer/addons';
 
-// audio source
-const streamUrl = 'https://www.youtube.com/watch?v=pS-gbqbVd8c';
+class SongPlayer extends Component {
 
-// some track meta information
-const trackTitle = 'Great song by random artist';
 
-const AWSSoundPlayer = withCustomAudio(props => {
-  const { trackTitle } = props;
-  console.log(this.props)
-  return (
-    <div>
-      <PlayButton {...this.props} />
-      <h2>{trackTitle}</h2>
-      <Timer {...this.props} />
-    </div>
-  );
-});
 
-class SongPlayer extends React.Component {
-  render() {
+
+
+  render(){
     return (
-      <AWSSoundPlayer
-        streamUrl={streamUrl}
-        trackTitle={trackTitle}
-        preloadType="metadata" />
-    );
+      <div class ='test'>
+      <div class='songPlayer'>
+        <ReactPlayer url={this.props.song}
+        playing={this.props.playing}
+        controls={true}/>
+        </div>
+      </div>
+
+    )
   }
+
+
+
 }
-export default SongPlayer;
+
+
+
+export default SongPlayer

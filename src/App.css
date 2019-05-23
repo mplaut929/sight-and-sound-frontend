@@ -113,6 +113,84 @@ h3 {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  position: relative
+  position: relative;
+
+}
+
+.test{
+  background: #FFF;
+  z-index: 1;
+}
+
+.songPlayer {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: -1
+}
+
+a {
+  color: white;
+}
+
+/* Welcome Page */
+
+#imageContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  bottom: 50%;
+  background-color:#FDFDFF;
+  text-align:center;
+  z-index: -1
+}
+
+#image {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  position: relative;
+}
+
+#buttonContainer {
+  position: absolute;
+   top: 50%;
+   right: 0;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:#62929E;
+   text-align:center;
+   color:#FFFFFF;
+
+}
+
+#loginContainer {
+  position: absolute;
+   top: 50%;
+   right: 0;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:#546a7b;
+   text-align:center;
+   color:#FFFFFF;
+
+}
+
+#signupContainer {
+  position: absolute;
+   top: 50%;
+   right: 0;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:#c6c5b9;
+   text-align:center;
+   color:#FFFFFF;
 
 }

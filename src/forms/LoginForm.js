@@ -1,4 +1,6 @@
 import React from 'react'
+import { Button, Image, Container, Divider } from 'semantic-ui-react'
+
 
 class LoginForm extends React.Component {
 	state = {
@@ -36,6 +38,11 @@ class LoginForm extends React.Component {
 
 	render(){
 		return (
+			<div>
+				<Container id="imageContainer">
+					<Image id="image" src='/Logo.png' fluid/>
+				</Container>
+				<Container id="loginContainer">
 			<form onSubmit={this.handleSubmit}>
 		      <label>Username</label>
 		      <input onChange={this.handleChange} name="username" value={this.state.username} placeholder='Username' />
@@ -43,6 +50,8 @@ class LoginForm extends React.Component {
 		      <input onChange={this.handleChange} type="password" name="password" value={this.state.password} placeholder='Password' />
 		    <button type='submit'>Submit</button>
 		  </form>
+			</Container>
+		</div>
 		)
 	}
 }

@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
 import SongList from './SongList'
-import SongPlayer from './SongPlayer'
-
 // import VideoPlayer from './VideoPlayer'
 import { connect } from 'react-redux'
 import { fetchSongs } from '../actions'
 
+import SongPlayer from './SongPlayer'
+
+
 
 class SongContainer extends Component {
+  state = {
+    currentSongUrl: null,
+    playing: false
+  }
+
+  updateSong = (url) => {
+    this.setState({
+      currentSongUrl: url,
+      playing: true
+    })
+  }
+
+  playOrPause = () => {
+    this.setState({
+      playing: !this.state.playing
+    })
+  }
+
+
+
   componentDidMount() {
     if (this.props.currentUser){
       this.props.fetchSongs(this.props.currentUser.id)
@@ -19,7 +40,9 @@ render (){
   console.log(this.props)
   return (
     <div>
-    <SongList songs={this.props.currentUser? this.props.songs : []} />
+      <SongList playOrPause={this.playOrPause} songs={this.props.currentUser? this.props.songs : []} updateSong={this.updateSong} currentSong={this.state.currentSongUrl}/>
+      <div class="ui divider"></div>
+      <SongPlayer playing={this.state.playing} song={this.state.currentSongUrl} />
     </div>
   )
 }
