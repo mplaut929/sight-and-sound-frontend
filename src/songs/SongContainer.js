@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { fetchSongs } from '../actions'
 
 import SongPlayer from './SongPlayer'
+import { Segment } from 'semantic-ui-react'
+
 
 
 
@@ -39,10 +41,14 @@ class SongContainer extends Component {
 render (){
   console.log(this.props)
   return (
-    <div>
-      <SongList playOrPause={this.playOrPause} songs={this.props.currentUser? this.props.songs : []} updateSong={this.updateSong} currentSong={this.state.currentSongUrl}/>
+    <div className ="songContainer">
+    <Segment style={{overflow: 'auto', maxHeight: 500}}>
+      <div className="songList">
+        <SongList playOrPause={this.playOrPause} songs={this.props.currentUser? this.props.songs : []} updateSong={this.updateSong} currentSong={this.state.currentSongUrl}/>
+      </div>
       <div class="ui divider"></div>
       <SongPlayer playing={this.state.playing} song={this.state.currentSongUrl} />
+    </Segment>
     </div>
   )
 }

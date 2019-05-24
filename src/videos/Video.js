@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Button, Image, List, Icon } from 'semantic-ui-react'
+
 
 
 class Video extends Component {
@@ -10,10 +12,12 @@ class Video extends Component {
   render(){
     return (
 
-        <li class="item" onClick={this.handleClick}>
+      <List.Item>
+        <List.Content floated='right' onClick={this.handleClick}>
           <img src={this.props.video.thumbnail} class="ui image" />
           <h6>{this.props.video.title}</h6>
-      </li>
+          </List.Content>
+        </List.Item>
     )
   }
 

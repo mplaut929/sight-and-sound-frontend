@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 export default class Navbar extends Component {
@@ -11,7 +11,11 @@ export default class Navbar extends Component {
     const { activeItem } = this.state
 
     return (
-      <Menu>
+      <Menu id= "navbar">
+        <Menu.Item>
+          <img src='/Logo.png' position="center"/>
+        </Menu.Item>
+
         <Menu.Item
           name='videos'
           active={activeItem === 'videos'}
@@ -24,6 +28,7 @@ export default class Navbar extends Component {
           <Link to="/songs" style={{ color: 'black' }}>Songs</Link>
         </Menu.Item>
 
+
         <Menu.Item
           position='right'
           name='addVideo'
@@ -35,9 +40,9 @@ export default class Navbar extends Component {
         <Menu.Item
           name='LoginPage'
           active={activeItem === 'loginPage'}
-          onClick={this.handleItemClick}
+          onClick={this.props.logOut}
         >
-          <Link to="/login" style={{ color: 'black' }}>Login Page</Link>
+          LogOut
         </Menu.Item>
       </Menu>
     )

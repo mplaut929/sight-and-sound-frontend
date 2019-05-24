@@ -6,6 +6,7 @@ import LoginForm from './forms/LoginForm'
 import SignupForm from './forms/SignupForm'
 import NewVideoForm from './forms/NewVideoForm'
 import Navbar from './Navbar'
+import Footer from './Footer'
 import Welcome from './Welcome'
 import './App.css';
 import { connect } from 'react-redux'
@@ -28,7 +29,7 @@ class App extends Component {
   		this.setState({
   			currentUser: null
   		}, () => {
-  			this.props.history.push("/login")
+  			this.props.history.push("/")
   		})
   	}
 
@@ -79,7 +80,7 @@ class App extends Component {
     // console.log(this.state.currentUser)
     return (
       <div className="App">
-        <Navbar />
+        <Navbar logOut={this.logOut}/>
           <Switch>
             <Route exact path="/" render={(routeProps) => {
               return <Welcome {...routeProps} />
@@ -100,7 +101,7 @@ class App extends Component {
           			return <NewVideoForm {...routeProps} setCurrentUser={this.setCurrentUser}/>
           		}} />
           	</Switch>
-
+          <Footer />
       </div>
 
 

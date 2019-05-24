@@ -42,7 +42,7 @@ class Song extends Component {
       <List.Item>
         <List.Content floated='right'>
           {this.props.song.url ?
-          (this.state.playing ?
+          (this.state.playing && this.props.currentSong === this.props.song.url ?
             <Button onClick={this.handleClick}>
               <Icon name='pause' />
             </Button>
@@ -54,7 +54,11 @@ class Song extends Component {
           <Button disabled>Not Available</Button>
         }
         </List.Content>
-        <List.Content>
+        <List.Content floated='left'>
+          {this.props.currentSong === this.props.song.url && this.props.song.url ?
+          <strong>Now Playing</strong> : null}
+        </List.Content>
+        <List.Content id="songInfo">
           <List.Header>{this.props.song.title}</List.Header>
           {this.props.song.artist}<br />
         {this.state.videos.length === 1 ? <small>From the video: {this.state.videos[0].title}</small> : <p>Hi</p>}
