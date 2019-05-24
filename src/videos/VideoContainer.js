@@ -3,7 +3,7 @@ import VideoList from './VideoList'
 import VideoPlayer from './VideoPlayer'
 import { connect } from 'react-redux'
 import { fetchVideos } from '../actions'
-
+import { Grid, Divider } from 'semantic-ui-react'
 
 class VideoContainer extends Component {
   state = {
@@ -24,11 +24,14 @@ class VideoContainer extends Component {
 
 render (){
   return (
-    <div>
-      <VideoList updateVideo={this.updateVideo} videos={this.props.videos} />
-      <div class="ui divider"></div>
-      <VideoPlayer video={this.state.currentVideo} currentUser={this.props.currentUser}/>
-    </div>
+    <Grid columns={2} relaxed='very' stackable>
+      <Grid.Column id="videoList">
+        <VideoList updateVideo={this.updateVideo} videos={this.props.videos} />
+      </Grid.Column>
+      <Grid.Column id="videoList">
+        <VideoPlayer video={this.state.currentVideo} currentUser={this.props.currentUser}/>
+      </Grid.Column>
+    </Grid>
   )
 }
 

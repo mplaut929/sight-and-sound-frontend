@@ -57,12 +57,14 @@ class VideoPlayer extends Component {
 
   render(){
     return (
-      <div class='player'>
-        <ReactPlayer url={this.props.video ? this.props.video.url : null}
+      <div class='player-wrapper'>
+
+        <ReactPlayer className='react-player'
+        url={this.props.video ? this.props.video.url : null}
         playing
         controls={true}
         onProgress={this.handleProgress}/>
-      {this.state.song ? <Button onClick={this.handleClick}>Like Song!</Button> : null}
+      {this.state.song && this.props.currentUser ? <Button onClick={this.handleClick}>Like Song!</Button> : null}
       </div>
 
     )

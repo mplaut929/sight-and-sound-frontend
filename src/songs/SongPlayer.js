@@ -14,7 +14,8 @@ class SongPlayer extends Component {
       <div class='songPlayer'>
         <ReactPlayer url={this.props.song}
         playing={this.props.playing}
-        controls={true}/>
+        controls={true}
+        />
         </div>
       </div>
 

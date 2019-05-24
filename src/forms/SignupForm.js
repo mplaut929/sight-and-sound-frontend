@@ -55,15 +55,38 @@ class SignupForm extends React.Component {
             <Image id="image" src='/Logo.png' fluid/>
           </Container>
           <Container id="signupContainer">
-  			<form onSubmit={this.handleSubmit}>
-  		      <label>Username</label>
-  		      <input onChange={this.handleChange} name="username" value={this.state.username} placeholder='Username' />
-  		      <label>Password</label>
-  		      <input onChange={this.handleChange} type="password" name="password" value={this.state.password} placeholder='Password' />
-  		      <label>Password Confirmation</label>
-  		      <input onChange={this.handleChange} type="password" name="passwordConfirmation" value={this.state.passwordConfirmation} placeholder='Password Confirmation' />
-  		    <button type='submit'>Submit</button>
-  		  </form>
+						<div class='ui middle aligned center aligned grid'>
+							<div class='column'>
+								<h2 class='ui image header'>
+									<div class='content'>
+										Signup
+									</div>
+								</h2>
+								<form onSubmit={this.handleSubmit} id="form" class='ui large form'>
+									<div class='ui stacked secondary segment'>
+										<div class='field'>
+											<div class='ui left icon input'>
+												<i class="user icon"></i>
+												<input onChange={this.handleChange} name="username" value={this.state.username} placeholder='Username' />
+											</div>
+										</div>
+										<div class='field'>
+											<div class='ui left icon input'>
+												<i class='lock icon'></i>
+												<input onChange={this.handleChange} type="password" name="password" value={this.state.password} placeholder='Password' />
+											</div>
+										</div>
+										<div class='field'>
+											<div class='ui left icon input'>
+												<i class='lock icon'></i>
+												<input onChange={this.handleChange} type="password" name="passwordConfirmation" value={this.state.passwordConfirmation} placeholder='Password Confirmation' />
+											</div>
+										</div>
+										<button class="ui fluid large submit button" type='submit'>Submit</button>
+									</div>
+								</form>
+							</div>
+						</div>
 				</Container>
 			</div>
   		)
