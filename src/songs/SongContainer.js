@@ -13,7 +13,10 @@ import { Segment } from 'semantic-ui-react'
 class SongContainer extends Component {
   state = {
     currentSongUrl: null,
-    playing: false
+    playing: false,
+    currentSongDuration: 0,
+    currentSongProgress: 0
+
   }
 
   updateSong = (url) => {
@@ -29,6 +32,25 @@ class SongContainer extends Component {
     })
   }
 
+  handleComplete = () => {
+    this.setState({
+      currentSongUrl: null,
+      playing: false
+    })
+  }
+
+  handleDuration = (duration) => {
+    this.setState({
+      currentSongDuration: duration
+    })
+  }
+
+  handleProgress = (progress) => {
+    this.setState({
+      currentSongProgress: progress
+    })
+  }
+
 
 
   componentDidMount() {
@@ -39,15 +61,25 @@ class SongContainer extends Component {
 
 
 render (){
-  console.log(this.props)
   return (
     <div className ="songContainer">
     <Segment style={{overflow: 'auto', maxHeight: 500}}>
       <div className="songList">
-        <SongList playOrPause={this.playOrPause} songs={this.props.currentUser? this.props.songs : []} updateSong={this.updateSong} currentSong={this.state.currentSongUrl}/>
+        <SongList
+          playOrPause={this.playOrPause}
+          songs={this.props.currentUser? this.props.songs : []}
+          updateSong={this.updateSong}
+          currentSong={this.state.currentSongUrl}
+          duration={this.state.currentSongDuration}
+          progress={this.state.currentSongProgress}/>
       </div>
       <div class="ui divider"></div>
-      <SongPlayer playing={this.state.playing} song={this.state.currentSongUrl} />
+      <SongPlayer
+        getDuration={this.handleDuration}
+        playing={this.state.playing}
+        song={this.state.currentSongUrl}
+        handleComplete={this.handleComplete}
+        getProgress={this.handleProgress}/>
     </Segment>
     </div>
   )

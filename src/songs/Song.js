@@ -35,9 +35,24 @@ class Song extends Component {
     })
   }
 
+  getSeconds = (time) => {
+    const newTime = Math.ceil(time)
+
+    const min = Math.floor(time % 3600 / 60);
+    const sec = Math.floor(time % 3600 % 60);
+    return ('0' + min).slice(-2) + ":" + ('0' + sec).slice(-2);
+  }
+
+  getProgressSeconds = (time) => {
+    const newTime = Math.ceil(time)
+
+    const min = Math.floor(time % 3600 / 60);
+    const sec = Math.floor(time % 3600 % 60);
+    return ('0' + min).slice(-2) + ":" + ('0' + sec).slice(-2);
+  }
+
 
   render(){
-    console.log(this.state)
     return (
       <List.Item>
         <List.Content floated='right'>
@@ -56,7 +71,12 @@ class Song extends Component {
         </List.Content>
         <List.Content floated='left'>
           {this.props.currentSong === this.props.song.url && this.props.song.url ?
-          <strong>Now Playing</strong> : null}
+          <div>
+            <strong>Now Playing</strong><br />
+            <p>{this.getProgressSeconds(this.props.progress.playedSeconds)} / {this.getSeconds(this.props.duration)}</p>
+          </div>
+
+            : null}
         </List.Content>
         <List.Content id="songInfo">
           <List.Header>{this.props.song.title}</List.Header>

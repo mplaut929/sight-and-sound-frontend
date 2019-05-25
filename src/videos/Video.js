@@ -13,7 +13,7 @@ class Video extends Component {
     return (
 
       <List.Item>
-        <List.Content floated='right' onClick={this.handleClick}>
+        <List.Content floated='left' onClick={this.handleClick}>
           <img src={this.props.video.thumbnail} class="ui image" />
           <h6>{this.props.video.title}</h6>
           </List.Content>
