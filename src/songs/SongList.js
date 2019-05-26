@@ -18,7 +18,8 @@ class SongList extends Component {
               playOrPause={this.props.playOrPause}
               currentSong={this.props.currentSong}
               duration={this.props.duration}
-              progress={this.props.progress}/>
+              progress={this.props.progress}
+              playing={this.props.playing}/>
           })}
         </List>
     )

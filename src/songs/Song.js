@@ -10,7 +10,6 @@ import { Button, Image, List, Icon } from 'semantic-ui-react'
 class Song extends Component {
 
   state = {
-    playing: false,
     videos: []
   }
 
@@ -30,9 +29,9 @@ class Song extends Component {
     this.props.playOrPause()
     :
     this.props.updateSong(this.props.song.url)
-    this.setState({
-      playing: !this.state.playing
-    })
+    // this.setState({
+    //   playing: !this.state.playing
+    // })
   }
 
   getSeconds = (time) => {
@@ -57,7 +56,7 @@ class Song extends Component {
       <List.Item>
         <List.Content floated='right'>
           {this.props.song.url ?
-          (this.state.playing && this.props.currentSong === this.props.song.url ?
+          (this.props.currentSong === this.props.song.url && this.props.playing ?
             <Button onClick={this.handleClick}>
               <Icon name='pause' />
             </Button>
@@ -81,7 +80,7 @@ class Song extends Component {
         <List.Content id="songInfo">
           <List.Header>{this.props.song.title}</List.Header>
           {this.props.song.artist}<br />
-        {this.state.videos.length === 1 ? <small>From the video: {this.state.videos[0].title}</small> : <p>Hi</p>}
+        {this.state.videos.length === 1 ? <small>From the video: {this.state.videos[0].title}</small> : <p>From the videos: {this.state.videos.join(', ')}</p>}
         </List.Content>
       </List.Item>
     )

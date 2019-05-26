@@ -27,10 +27,8 @@ class LoginForm extends React.Component {
 		.then(res => res.json())
 		.then(response => {
 			if (response.errors){
-				// if there are erros, crap, the response is an error
 				alert(response.errors)
 			} else {
-				// if there are no errors, great, the response is a user object
 				this.props.setCurrentUser(response)
 			}
 		})

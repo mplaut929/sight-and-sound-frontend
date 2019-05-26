@@ -28,7 +28,7 @@ render (){
       <Grid.Column id="videoList">
         <VideoList updateVideo={this.updateVideo} videos={this.props.videos} />
       </Grid.Column>
-      <Grid.Column id="videoList">
+      <Grid.Column id="videoListPlayer">
         <VideoPlayer video={this.state.currentVideo} currentUser={this.props.currentUser}/>
       </Grid.Column>
     </Grid>

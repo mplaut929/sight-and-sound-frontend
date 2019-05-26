@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Input } from 'semantic-ui-react'
+import { Button, Form, Input, Segment } from 'semantic-ui-react'
 import { fetchVideos } from '../actions'
 import { connect } from 'react-redux'
 
@@ -65,7 +65,9 @@ class NewVideoForm extends Component {
   render(){
     console.log(this.state)
     return (
-
+<div className="newVideoContainer">
+  <Segment style={{overflow: 'auto', maxHeight: 500}}>
+  <h1>Add Video with Songs</h1>
   <Form onSubmit={this.handleSubmit}>
     <Form.Field width={8}>
       <label>Video Title</label>
@@ -106,6 +108,8 @@ class NewVideoForm extends Component {
     <Button onClick={this.handleClick}>Add Another Song </Button>
     <Button type='submit'>Submit</Button>
   </Form>
+</Segment>
+  </div>
 
 
 
