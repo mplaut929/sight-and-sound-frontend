@@ -71,7 +71,8 @@ render (){
           updateSong={this.updateSong}
           currentSong={this.state.currentSongUrl}
           duration={this.state.currentSongDuration}
-          progress={this.state.currentSongProgress}/>
+          progress={this.state.currentSongProgress}
+          playing={this.state.playing}/>
       </div>
       <div class="ui divider"></div>
       <SongPlayer

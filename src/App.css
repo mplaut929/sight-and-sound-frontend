@@ -3,7 +3,17 @@
 }
 
 body {
-background-color: #DBE9EE;
+background-color: #f0f8ff;
+font-family: 'Indie Flower', cursive;
+
+}
+
+h1, button {
+  font-family: 'Merriweather', serif;
+}
+
+h5 {
+  font-family: 'Indie Flower', cursive;
 }
 
 
@@ -111,8 +121,9 @@ a {
 }
 
 #videoListPlayer {
-  width: 70%;
-  height: 100%
+  width: 40%;
+  height: 100%;
+
 }
 
 .player-wrapper {
@@ -171,3 +182,54 @@ a {
   padding: 10px;
 
 }
+
+
+.newVideoContainer {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100%;
+     margin-top: 5%;
+     margin-bottom: 5%
+   }
+
+/* like song button */
+   .likeSongButton{
+   background:#f17300;
+   color:#f0f8ff;
+   border:none;
+   position:relative;
+   height:60px;
+   font-size:1.6em;
+   padding:0 2em;
+   cursor:pointer;
+   transition:800ms ease all;
+   outline:none;
+   position: fixed;
+    top: 50px;
+    right: 10px;
+ }
+ .likeSongButton:hover{
+   background:#f0f8ff;
+   color:#f17300;
+ }
+ .likeSongButton:before,.likeSongButton:after{
+   content:'';
+   position:absolute;
+   top:0;
+   right:0;
+   height:2px;
+   width:0;
+   background: #f17300;
+   transition:400ms ease all;
+ }
+ .likeSongButton:after{
+   right:inherit;
+   top:inherit;
+   left:0;
+   bottom:0;
+ }
+ .likeSongButton:hover:before,.likeSongButton:hover:after{
+   width:100%;
+   transition:800ms ease all;
+ }

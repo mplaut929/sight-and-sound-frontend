@@ -50,6 +50,7 @@ class VideoPlayer extends Component {
       })
     }).then(res => res.json()).then(res => {
       this.props.fetchSongs(this.props.currentUser.id)
+
   })
   }
 
@@ -64,7 +65,7 @@ class VideoPlayer extends Component {
         playing
         controls={true}
         onProgress={this.handleProgress}/>
-      {this.state.song && this.props.currentUser ? <Button onClick={this.handleClick}>Like Song!</Button> : null}
+      {this.state.song && this.props.currentUser ? <button class="likeSongButton" onClick={this.handleClick}>Like Song!</button> : null}
       </div>
 
     )

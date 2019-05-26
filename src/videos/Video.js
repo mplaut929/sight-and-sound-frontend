@@ -12,10 +12,10 @@ class Video extends Component {
   render(){
     return (
 
-      <List.Item>
-        <List.Content floated='left' onClick={this.handleClick}>
-          <img src={this.props.video.thumbnail} class="ui image" />
-          <h6>{this.props.video.title}</h6>
+      <List.Item className='ui list'>
+        <Image avatar src={this.props.video.thumbnail} floated="left"/>
+        <List.Content floated="left" onClick={this.handleClick}>
+          <List.Header>{this.props.video.title}</List.Header>
           </List.Content>
         </List.Item>
     )
