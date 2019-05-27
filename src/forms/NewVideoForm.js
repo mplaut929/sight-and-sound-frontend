@@ -59,6 +59,7 @@ class NewVideoForm extends Component {
     // })
     this.props.fetchVideos()
   })
+
   }
 
 

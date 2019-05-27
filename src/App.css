@@ -116,7 +116,7 @@ a {
 /* Video Page */
 
 #videoList {
-  width: 30%;
+  width: 35%;
   height: 100%
 }
 
@@ -233,3 +233,86 @@ a {
    width:100%;
    transition:800ms ease all;
  }
+
+ /* Welcome Text Animation */
+
+ .textAnimation {
+  text-align:center;
+  font-weight:300;
+  font-size:45px;
+  line-height: normal;
+  padding-top: 10px;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 10;
+  -webkit-transform: translate3d(0,0,0);
+}
+
+
+.welcome {
+  display:inline-block;
+  white-space:nowrap;
+  overflow: hidden;
+}
+
+.welcome:first-of-type {    /* For increasing performance
+                       ID/Class should've been used.
+                       For a small demo
+                       it's okaish for now */
+  animation: showup 7s infinite;
+}
+
+.welcome:last-of-type {
+  width:0px;
+  animation: reveal 7s infinite;
+}
+
+.welcome:last-of-type span {
+  margin-left:-355px;
+  animation: slidein 7s infinite;
+}
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:350px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:350px;}
+}
+
+/*Playlist Header */
+
+.playlistHeader {
+	text-align: center;
+	color: #FFF;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	letter-spacing: 1px;
+}
+
+.playlistText {
+	background-image: url(https://media.giphy.com/media/6wpHEQNjkd74Q/giphy.gif);
+	background-size: cover;
+	color: transparent;
+	-moz-background-clip: text;
+	-webkit-background-clip: text;
+	text-transform: uppercase;
+	font-size: 40px;
+	line-height: .75;
+	margin: 10px 0;
+}
