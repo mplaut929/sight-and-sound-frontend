@@ -9,7 +9,7 @@ class SongList extends Component {
   render(){
     return (
         <List divided verticalAlign='middle'>
-        <Header>Your Playlist</Header>
+        <Header className="playlistHeader"><h3 className='playlistText'>Your Playlist</h3></Header>
         {this.props.songs.map((song) => {
             return <Song
               key={song.id}

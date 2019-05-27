@@ -15,8 +15,13 @@ class Welcome extends Component {
             <Image id="image" src='/Logo.png' fluid/>
           </Container>
           <Container id="buttonContainer">
-            <h1>Welcome to Sight & Sound!</h1>
-            <h3>Who's watching?</h3><br />
+            <div className="textAnimation">
+              <div className='welcome'>Welcome</div>
+              <div className='welcome'>
+                <span>to Sight & Sound!</span>
+              </div>
+            </div>
+            <h2>Who's watching?</h2><br />
           <Button.Group>
             <Button><Link to="/login" style={{ color: 'black' }}>Login</Link></Button>
             <Button.Or />
