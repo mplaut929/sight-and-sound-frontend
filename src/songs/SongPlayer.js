@@ -22,6 +22,7 @@ class SongPlayer extends Component {
         onEnded={this.props.handleComplete}
         onDuration={this.handleDuration}
         onProgress={this.handleProgress}
+        onEnded={this.props.handleEnded}
         />
         </div>
       </div>

@@ -51,6 +51,14 @@ class SongContainer extends Component {
     })
   }
 
+  handleEnded = () => {
+    const songs = this.props.songs.map((song) => {
+      return song.url
+    })
+    const song = songs[Math.floor(Math.random()*songs.length)];
+    this.updateSong(song)
+  }
+
 
 
   componentDidMount() {
@@ -72,7 +80,8 @@ render (){
           currentSong={this.state.currentSongUrl}
           duration={this.state.currentSongDuration}
           progress={this.state.currentSongProgress}
-          playing={this.state.playing}/>
+          playing={this.state.playing}
+          currentUser={this.props.currentUser}/>
       </div>
       <div class="ui divider"></div>
       <SongPlayer
@@ -80,7 +89,8 @@ render (){
         playing={this.state.playing}
         song={this.state.currentSongUrl}
         handleComplete={this.handleComplete}
-        getProgress={this.handleProgress}/>
+        getProgress={this.handleProgress}
+        handleEnded ={this.handleEnded}/>
     </Segment>
     </div>
   )

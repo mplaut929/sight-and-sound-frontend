@@ -80,7 +80,7 @@ class App extends Component {
     // console.log(this.state.currentUser)
     return (
       <div className="App">
-        <Navbar logOut={this.logOut}/>
+        <Navbar logOut={this.logOut} currentUser={this.state.currentUser}/>
           <Switch>
             <Route exact path="/" render={(routeProps) => {
               return <Welcome {...routeProps} />
