@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Image, List, Icon } from 'semantic-ui-react'
+import { Button, Image, List, Icon, Modal, Header} from 'semantic-ui-react'
 
 
 
@@ -10,7 +9,9 @@ import { Button, Image, List, Icon } from 'semantic-ui-react'
 class Song extends Component {
 
   state = {
-    videos: []
+    videos: [],
+    recommendedSongs: [],
+    recommendedSong: ''
   }
 
 
@@ -50,6 +51,27 @@ class Song extends Component {
     return ('0' + min).slice(-2) + ":" + ('0' + sec).slice(-2);
   }
 
+  handleRecommended = () => {
+    fetch(`http://localhost:3000/songs/${this.props.song.id}/recommended`)
+    .then(res => res.json())
+    .then(res => {
+      this.setState({
+        recommendedSongs: res
+      })
+      let i = 0
+      while (i < this.state.recommendedSongs.length) {
+        if (this.state.recommendedSongs[i].id !== this.props.song.id && !(this.props.currentUser.songs.find(song => song.id === this.state.recommendedSongs[i].id))){
+          this.setState({
+            recommendedSong: this.state.recommendedSongs[i]
+          })
+          break;
+        }
+      i = i + 1
+      }
+
+    })
+  }
+
 
   render(){
     return (
@@ -57,16 +79,35 @@ class Song extends Component {
         <List.Content floated='right'>
           {this.props.song.url ?
           (this.props.currentSong === this.props.song.url && this.props.playing ?
-            <Button onClick={this.handleClick}>
+            <Button id="playButton" onClick={this.handleClick}>
               <Icon name='pause' />
             </Button>
             :
-            <Button onClick={this.handleClick}>
+            <Button id="playButton" onClick={this.handleClick}>
               <Icon name='play' />
             </Button>)
            :
           <Button disabled>Not Available</Button>
         }
+        <Modal size={'mini'} trigger={<Button id="recommendButton" size='mini' onClick ={this.handleRecommended}><Icon name='expand arrows alternate' /></Button>} closeIcon>
+          <Modal.Header>Recommended Song</Modal.Header>
+          <Modal.Content floated="right">
+            <Modal.Description>
+              <Header>{this.state.recommendedSong.title}</Header>
+              <p>{this.state.recommendedSong.artist}</p>
+              <p>
+                {this.state.recommendedSong ?
+                (this.state.recommendedSong.videos.length === 1 ?
+                  <small>From the video: {this.state.recommendedSong.videos[0].title}</small>
+                    :
+                    <small>From the videos: {this.state.recommendedSong.videos.join(', ')}</small> )
+                :
+                null
+              }
+              </p>
+            </Modal.Description>
+          </Modal.Content>
+        </Modal>
         </List.Content>
         <List.Content floated='left'>
           {this.props.currentSong === this.props.song.url && this.props.song.url ?
@@ -80,7 +121,7 @@ class Song extends Component {
         <List.Content id="songInfo">
           <List.Header>{this.props.song.title}</List.Header>
           {this.props.song.artist}<br />
-        {this.state.videos.length === 1 ? <small>From the video: {this.state.videos[0].title}</small> : <p>From the videos: {this.state.videos.join(', ')}</p>}
+          {this.state.videos.length === 1 ? <small>From the video: {this.state.videos[0].title}</small> : <p>From the videos: {this.state.videos.join(', ')}</p>}
         </List.Content>
       </List.Item>
     )

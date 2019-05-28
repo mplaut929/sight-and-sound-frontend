@@ -40,6 +40,7 @@ class NewVideoForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    console.log("submitted")
     fetch('http://localhost:3000/videos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -64,7 +65,6 @@ class NewVideoForm extends Component {
 
 
   render(){
-    console.log(this.state)
     return (
 <div className="newVideoContainer">
   <Segment style={{overflow: 'auto', maxHeight: 500}}>
@@ -72,44 +72,45 @@ class NewVideoForm extends Component {
   <Form onSubmit={this.handleSubmit}>
     <Form.Field width={8}>
       <label>Video Title</label>
-      <input name='videoTitle' value={this.state.videoTitle} onChange={this.handleChange} placeholder='Video Title' />
+      <input required name='videoTitle' value={this.state.videoTitle} onChange={this.handleChange} placeholder='Video Title' />
     </Form.Field>
     <Form.Field width={8}>
       <label>Video URL</label>
-      <input name='videoUrl' value={this.state.videoUrl} onChange={this.handleChange} placeholder='Video URL' />
+      <input required name='videoUrl' value={this.state.videoUrl} onChange={this.handleChange} placeholder='Video URL' />
     </Form.Field>
     <Form.Field width={8}>
       <label>Video Thumbnail</label>
-      <input name='videoThumbnail' value={this.state.videoThumbnail} onChange={this.handleChange} placeholder='Video Thumbnail' />
+      <input required name='videoThumbnail' value={this.state.videoThumbnail} onChange={this.handleChange} placeholder='Video Thumbnail' />
     </Form.Field>
     {this.state.songs.map((song, index) => (
     <Form.Group widths='equal'>
       <Form.Field>
         <label>Song Title</label>
-        <input name='title' value={song.title} onChange={this.handleSongChange(index)} fluid placeholder='Song Title' />
+        <input required name='title' value={song.title} onChange={this.handleSongChange(index)} fluid placeholder='Song Title' />
       </Form.Field>
       <Form.Field>
         <label>Song Artist</label>
-        <input name='artist' value={song.artist} onChange={this.handleSongChange(index)} fluid placeholder='Song Artist' />
+        <input required name='artist' value={song.artist} onChange={this.handleSongChange(index)} fluid placeholder='Song Artist' />
       </Form.Field>
       <Form.Field>
         <label>Song URL</label>
-        <input name='url'value={song.url} onChange={this.handleSongChange(index)} fluid placeholder='Song URL' />
+        <input required name='url'value={song.url} onChange={this.handleSongChange(index)} fluid placeholder='Song URL' />
       </Form.Field>
       <Form.Field>
         <label>Song Start Time (in seconds)</label>
-        <input name='song_start' value={song.song_start} onChange={this.handleSongChange(index)} fluid placeholder='Song Start Time (in seconds)' />
+        <input required name='song_start' value={song.song_start} onChange={this.handleSongChange(index)} fluid placeholder='Song Start Time (in seconds)' />
       </Form.Field>
       <Form.Field>
         <label>Song End Time (in seconds)</label>
-        <input name='song_end' value={song.song_end} onChange={this.handleSongChange(index)} fluid placeholder='Song End Time (in seconds)' />
+        <input required name='song_end' value={song.song_end} onChange={this.handleSongChange(index)} fluid placeholder='Song End Time (in seconds)' />
       </Form.Field>
     </Form.Group>
     ))}
-    <Button onClick={this.handleClick}>Add Another Song </Button>
     <Button type='submit'>Submit</Button>
   </Form>
+  <Button floated='right' onClick={this.handleClick}>Add Another Song </Button>
 </Segment>
+
   </div>
 
 

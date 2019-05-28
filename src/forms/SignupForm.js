@@ -67,7 +67,7 @@ class SignupForm extends React.Component {
 										<div class='field'>
 											<div class='ui left icon input'>
 												<i class="user icon"></i>
-												<input onChange={this.handleChange} name="username" value={this.state.username} placeholder='Username' />
+												<input required onChange={this.handleChange} name="username" value={this.state.username} placeholder='Username' />
 											</div>
 										</div>
 										<div class='field'>

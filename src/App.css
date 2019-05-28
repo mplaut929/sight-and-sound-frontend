@@ -316,3 +316,17 @@ a {
 	line-height: .75;
 	margin: 10px 0;
 }
+
+
+
+#recommendButton {
+  background-color: #ebf2fa;
+}
+
+#playButton {
+  background-color: #81a4cd;
+}
+
+#shuffleButton {
+  background-color: #f17300;
+}
