@@ -52,8 +52,11 @@ class SongContainer extends Component {
   }
 
   handleEnded = () => {
-    const songs = this.props.songs.map((song) => {
-      return song.url
+    const songs = []
+    this.props.songs.map((song) => {
+      if (this.state.currentSongUrl !== song.url){
+      songs.push(song.url)
+    }
     })
     const song = songs[Math.floor(Math.random()*songs.length)];
     this.updateSong(song)

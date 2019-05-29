@@ -7,8 +7,11 @@ import { List, Segment, Header, Button, Icon } from 'semantic-ui-react'
 class SongList extends Component {
 
   handleClick = () => {
-    const songs = this.props.songs.map((song) => {
-      return song.url
+    const songs = []
+    this.props.songs.map((song) => {
+      if (this.props.currentSong !== song.url){
+      songs.push(song.url)
+    }
     })
     const song = songs[Math.floor(Math.random()*songs.length)];
     this.props.updateSong(song)
