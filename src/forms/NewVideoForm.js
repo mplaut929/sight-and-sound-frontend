@@ -41,7 +41,7 @@ class NewVideoForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     console.log("submitted")
-    fetch('http://localhost:3000/videos', {
+    fetch('https://sight-and-sound.herokuapp.com/videos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

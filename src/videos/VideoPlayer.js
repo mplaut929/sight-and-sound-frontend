@@ -11,7 +11,13 @@ class VideoPlayer extends Component {
   state = {
     song: false,
     progress: 0,
-    currentSong: null
+    currentSong: 'null'
+  }
+
+  componentDidMount() {
+    if (this.props.currentUser){
+      this.props.fetchSongs(this.props.currentUser.id)
+    }
   }
 
   handleProgress= (progress) => {
@@ -24,16 +30,19 @@ class VideoPlayer extends Component {
     this.setState({
       progress: progress.playedSeconds
     })
-    const foundVideo = this.props.video.video_songs.find(vs => vs.song_start < progress.playedSeconds && vs.song_end > progress.playedSeconds)
-    if (foundVideo){
+    const foundSong = this.props.video.video_songs.find(vs => vs.song_start < progress.playedSeconds && vs.song_end > progress.playedSeconds)
+    if (foundSong &&
+      !(this.props.songs.find(song => song.id === foundSong.song_id))){
       this.setState({
         song: true,
-        currentSong: foundVideo
+        currentSong: foundSong,
+        notClicked: true
       })
     }else{
       this.setState({
         song: false,
-        currentSong: null
+        currentSong: null,
+        notCliked: false
       })
     }
   }
@@ -41,7 +50,7 @@ class VideoPlayer extends Component {
   handleClick = () => {
     const foundVideo = this.props.video.video_songs
     // console.log(this.state.currentSong.song_id)
-    fetch('http://localhost:3000/user_songs', {
+    fetch('https://sight-and-sound.herokuapp.com/user_songs', {
       method: "POST",
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -57,6 +66,10 @@ class VideoPlayer extends Component {
 
 
   render(){
+    console.log(this.state.song)
+    console.log(this.props.currentUser ? this.props.currentUser: "hi")
+    console.log(this.props.currentUser && this.state.currentSong ? !(this.props.currentUser.songs.find(song => song.id === this.state.currentSong.song_id)) : "hi")
+    console.log(this.props.currentUser && this.state.currentSong ? this.props.songs: "hi")
     return (
       <div class='player-wrapper'>
 
@@ -65,7 +78,10 @@ class VideoPlayer extends Component {
         playing
         controls={true}
         onProgress={this.handleProgress}/>
-      {this.state.song && this.props.currentUser ? <button class="likeSongButton" onClick={this.handleClick}>Like Song!</button> : null}
+      {this.state.song &&
+        this.props.currentUser &&
+        !(this.props.songs.find(song => song.id === this.state.currentSong.song_id)) ?
+        <button class="likeSongButton" onClick={this.handleClick}>Like Song!</button> : null}
       </div>
 
     )
