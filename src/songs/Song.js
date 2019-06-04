@@ -16,7 +16,7 @@ class Song extends Component {
 
 
   componentDidMount() {
-    fetch(`http://localhost:3000/songs/${this.props.song.id}`)
+    fetch(`https://sight-and-sound.herokuapp.com/songs/${this.props.song.id}`)
     .then(res => res.json())
     .then(res => {
       this.setState({
@@ -52,7 +52,7 @@ class Song extends Component {
   }
 
   handleRecommended = () => {
-    fetch(`http://localhost:3000/songs/${this.props.song.id}/recommended`)
+    fetch(`https://sight-and-sound.herokuapp.com/songs/${this.props.song.id}/recommended`)
     .then(res => res.json())
     .then(res => {
       this.setState({

@@ -14,6 +14,12 @@ class VideoPlayer extends Component {
     currentSong: 'null'
   }
 
+  componentDidMount() {
+    if (this.props.currentUser){
+      this.props.fetchSongs(this.props.currentUser.id)
+    }
+  }
+
   handleProgress= (progress) => {
     //  for (let i = 0; i < this.props.video.video_songs.length; i++){
     //   if (this.props.video.video_songs[i].song_start < progress.playedSeconds && this.props.video.video_songs[i].song_end > progress.playedSeconds){
@@ -44,7 +50,7 @@ class VideoPlayer extends Component {
   handleClick = () => {
     const foundVideo = this.props.video.video_songs
     // console.log(this.state.currentSong.song_id)
-    fetch('http://localhost:3000/user_songs', {
+    fetch('https://sight-and-sound.herokuapp.com/user_songs', {
       method: "POST",
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({
