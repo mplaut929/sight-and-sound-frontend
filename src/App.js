@@ -82,22 +82,22 @@ class App extends Component {
       <div className="App">
         <Navbar logOut={this.logOut} currentUser={this.state.currentUser}/>
           <Switch>
-            <Route exact path="/" render={(routeProps) => {
+            <Route exact path="/sight-and-sound-frontend/" render={(routeProps) => {
               return <Welcome {...routeProps} />
             }} />
-            <Route exact path="/videos" render={(routeProps) => {
+          <Route exact path="/sight-and-sound-frontend/videos" render={(routeProps) => {
               return <VideoContainer {...routeProps} currentUser={this.state.currentUser}/>
             }} />
-          <Route path="/songs" render={(routeProps) => {
+          <Route path="/sight-and-sound-frontend/songs" render={(routeProps) => {
               return <SongContainer {...routeProps} currentUser={this.state.currentUser}/>
             }} />
-          <Route path="/login" render={(routeProps) => {
+          <Route path="/sight-and-sound-frontend/login" render={(routeProps) => {
           			return <LoginForm {...routeProps} setCurrentUser={this.setCurrentUser}/>
           		}} />
-            <Route path="/signup" render={(routeProps) => {
+            <Route path="/sight-and-sound-frontend/signup" render={(routeProps) => {
           			return <SignupForm {...routeProps} setCurrentUser={this.setCurrentUser}/>
           		}} />
-            <Route path="/new" render={(routeProps) => {
+            <Route path="/sight-and-sound-frontend/new" render={(routeProps) => {
           			return <NewVideoForm {...routeProps} setCurrentUser={this.setCurrentUser}/>
           		}} />
           	</Switch>
@@ -109,7 +109,7 @@ class App extends Component {
   }
 
 
-}
+}/sight-and-sound-frontend
 
 // const mapStateToProps = (state) => {
 //   console.log(state)
