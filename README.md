@@ -1,7 +1,7 @@
 # Sight and Sound
 
 Sight and Sound is a music/video sharing app where users can watch and upload their favorite movie/tv/trailer/commericial music scenes.
-As a user, I can like the songs from the videos, and create a plylist that i can then listen to.  
+As a user, you can like the songs from the videos, and create a playlist that you can then listen to.  
 
 ## Instructions
 
