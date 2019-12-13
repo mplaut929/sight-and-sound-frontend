@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import MainReducer from './reducers/MainReducer'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-const store = createStore(MainReducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+const store = createStore(MainReducer, compose(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <Provider store={store} >
